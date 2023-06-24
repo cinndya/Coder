@@ -1,0 +1,470 @@
+/* Cara untuk melihat letak dari folder (klik kanan -> Reveal in File Explorer (Shift+Alt+R)
+    Short Cut:
+    - shift + tab : untuk merapikan barisan mundur sekali sesuai content
+    - alt + klik : disesuaikan untuk multiple penamaan di tempat yang beda barisnya
+    - ctrl + alt + panah bawah : untuk multiple penamaan yang baris dibawahnya
+*/
+*{
+    font-family: "Montserrat";
+
+    /* untuk menghitung padding dan margin sesuai dengan lebar dan tingginya sehingga tudak ada content yang berlebih */
+    box-sizing: border-box;
+
+    /* Untuk berpindah section dengan efek yang smooth */
+    scroll-behavior: smooth;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Sesi 15: Position
+    - relative: bedanya ketika menambahkan posisi (top/right/left/bottom)
+    - fixed: bedanya ketika menambahkan posisi (top/right/left/bottom), posisinya ketika scroll tidak berubah
+    - sticky: posisinya akan tetap di top ketika bisa untuk navbar
+    - absolute: posisinya bisa diatur yang relative terhadap parentnya*/
+/*  #dummy { */
+        /* width: 100px; */
+/*        
+        width: 500px;
+        height: 100px;
+        background-color: red; */
+        
+        /* position: relative;
+        left: 100px; */
+
+        /* position: fixed;
+        left: 100px; */
+
+        /* position: sticky;
+        top: 10px; */
+
+        /* position: static; */
+       
+        /* position: relative;
+        top: 10px; */
+/*  }  */
+
+    /* #dummy img {
+        position: absolute;
+        right: 0;
+    } */
+
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 128px;
+    z-index: 5;
+    position: sticky;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.668);
+    border-bottom: 1px solid #979797;
+    backdrop-filter: blur(5px);
+    transition: height 250ms cubic-bezier(0.4, 0, 0.6, 1) 0ms,background-color 250ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+}
+
+/* Sesi 18: Keyframe dan Animation */
+#header h1 {
+    margin: 0;
+    /* animation: flash 1s infinite; */
+    animation: bounceIn 1s;
+}
+
+@keyframes flash {
+    from {
+        filter: opacity(0);
+    }
+    to {
+        filter: opacity(1);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        filter: opacity(0);
+        transform: translateY(-20px);
+    }
+    35% {
+        filter: opacity(0.25);
+        transform: translateY(0);
+    }
+    70% {
+        filter: opacity(0.5);
+        transform: translateY(-10px);
+    }
+    100% {
+        filter: opacity(1);
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    font-size: 48px;
+    margin: 0 0 16px 0;
+}
+
+nav > a {
+    margin-left: 12px;
+}
+
+/* Sesi 16: Pseudo Classes 
+    -> Sebuah Keyword yang ditambahkan dalam css selector (html tag, class, id) untuk menspesifikasikan kondisi/state pada element html
+
+*/
+
+nav > a:hover {
+    color: #FFC108;
+}
+
+
+a {
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+section {
+    padding: 64px 128px;
+}
+
+img, iframe {
+    width: 100%;
+}
+
+#landing, #about {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 16px;
+}
+
+#landing p {
+    margin-bottom: 32px;
+}
+
+#landing > div, #about > div {
+    width: 50%;
+}
+
+p {
+    color: #979797;
+    font-size: 24px;
+    margin: 0 0 16px 0;
+}
+
+.btn {
+    padding: 8px 20px;
+    background-color: #FFC108;
+    color: white;
+    border: 2px solid #FFC108;
+} 
+
+.btn-alt {
+    background-color: white;
+    color: black;
+    margin-right: 20px;
+}
+
+#about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+    margin-top: 72px;
+}
+
+.about-stats-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#about-stats > div > div {
+    width: 50px;
+    height: 10px;
+    background-color: #FFC108;
+    margin-bottom: 16px;
+}
+
+.service-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 100px;
+}
+
+/* Sesi 16: Pseudo Classes */
+.service-header h1 {
+    position: relative;
+}
+
+.service-header h1::before {
+    content: "";
+    width: 60px;
+    height: 60px;
+    background: url("images/accent1.svg");
+    position: absolute;
+    left: -20px;
+    top: -10px;
+    /* z-index: untuk mengatur posisi depan atau belakang */
+    z-index: -1;
+}
+
+.service-detail {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 128px;
+    margin-top: 72px;
+}
+
+.service-detail-item {
+    /* box-shadow: x_axis y-axis blur color */
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Sesi 17: transform dan filter 
+    transform:
+    - scale(): untuk memperbesar ukuran gambar/content
+    - rotate() : untuk mengatur/memutar posisi dari gambar (satuan degree/derajat)
+    - translate() : untuk memindahkan/mengatur posisi content
+    - skew(): untuk memiringkan/mencondongkan ukuran content
+    filter:
+    - grayscale() : untuk mengubah warna gambar/content menjadi hitam putih
+    - blur() : untuk memburamkan gambar
+    - contrast() : membuat warna pada gambar menjadi kontras dan terang
+    - brightness(): mencerahkan tampilan dari gambar
+    - opacity(): untuk warna transparan
+*/
+.service-detail-item:hover {
+    transform: scale(1.15);
+    /* transform: rotate(90deg); */
+    /* transform: translate(-100px); */
+    /* transform: skew(2deg, 2deg); */
+}
+
+.service-detail-item:hover img {
+    filter: grayscale(0);
+}
+
+.service-detail-item img {
+    width: 100%;
+    filter: grayscale(1);
+    /* filter: blur(2px); */
+    /* filter: contrast(4); */
+    /* filter: brightness(10%); */
+    /* filter: saturate(10); */
+    /* filter: invert(); */
+    /* filter: opacity(0.3); */
+}
+
+.service-detail-item h2 {
+    padding: 16px 16px;
+}
+
+.service-detail-item p {
+    font-size: 16px;
+    padding: 0 16px;
+}
+
+/* Sesi 16: Pseudo Classes */
+#contact h1 {
+    position: relative;
+}
+
+#contact > h1::before {
+    content: "";
+    width: 60px;
+    height: 60px;
+    background: url("images/accent2.svg");
+    position: absolute;
+    left: -20px;
+    top: -10px;
+    z-index: -1;
+}
+
+.contact-detail {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 72px;
+    column-gap: 128px;
+}
+
+.contact-detail > div, .contact-detail > form {
+    width: 50%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    border: 5px solid #FFC108;
+    padding: 64px 24px;
+}
+
+form h1 {
+    font-size: 32px;
+    text-align: center;
+}
+
+/* Sesi 16: Pseudo Classes */
+form button:hover {
+    cursor: pointer;
+}
+
+.form-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 32px;
+    margin-top: 32px;
+    grid-template-areas: "name subject"
+                          "email phoneNumber"
+                          "message message";
+}
+
+#grid-name {
+    grid-area: name;
+}
+
+#grid-subject {
+    grid-area: subject;
+}
+
+#grid-email {
+    grid-area: email;
+}
+
+#grid-phone-number {
+    grid-area: phoneNumber;
+}
+
+#grid-message {
+    grid-area: message;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+}
+
+.input-group label {
+    font-weight: 700;
+    margin-bottom: 16px;
+    font-size: 24px;
+}
+
+.input-group input {
+    border: none;
+    outline: none;
+    border-bottom: 2px solid black;
+    font-size: 20px;
+}
+
+/* Sesi 16: Pseudo Classes */
+.input-group input:focus {
+    border-bottom: 2px solid #FFC108;
+}
+
+footer {
+    padding: 16px 128px;
+    background-color: #FFC108;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+footer p {
+    color: white;
+    width: 50%;
+}
+
+.social-icon {
+    display: flex;
+    gap: 32px;
+}
+
+
+/* Sesi 19: Media Query */
+@media only screen and (max-width: 1200px){
+    .service-detail {
+        gap: 24px;
+    }
+
+    .contact-detail {
+        gap: 24px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 992px){
+    #header, #footer {
+        padding: 16px 32px;
+        width: 100%;
+    }
+
+    section {
+        padding: 64px 32px;
+    }
+
+    #landing {
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    #landing > div, #about > div {
+        width: 100%;
+    }
+
+    #about {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .service-detail {
+        gap: 16px;
+    }
+
+    .contact-detail {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: 64px;
+    }
+
+    .contact-detail form, .contact-detail > div {
+        width: 100%;
+    }
+
+    .social-icon {
+        gap: 16px;
+    }
+    
+}
+
+@media only screen and (max-width: 850px){
+    .service-header {
+        column-gap: 50px;
+    }
+
+    .service-detail {
+        display: flex;
+        flex-direction: column;
+        row-gap: 30px;
+    }
+
+    #footer > div {
+        display: inline-block;
+        justify-content: center;
+        align-items: center;
+    }
+}
